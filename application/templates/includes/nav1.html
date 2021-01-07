@@ -1,0 +1,21 @@
+    <header>
+        <nav>
+            <ul class="nav nav-pills">
+                <li class="nav-item"><a href="{{ url_for('index1') }}" class="nav-link {% if index1 %} active {% endif %}">Home</a></li>
+                {% if not session['memname'] %}
+                <li class="nav-item"><a href="{{ url_for('member1') }}" class="nav-link {% if member1 %} active {% endif %}">Members</a></li>
+                {%else%}
+                <li class="nav-item"><a href="{{ url_for('member1') }}" class="nav-link {% if member1 %} active {% endif %}">My Details</a></li> 
+                {%endif%}
+                {% if not session['memname'] %}
+                <li class="nav-item"><a href="{{ url_for('register1') }}" class="nav-link {% if register1 %} active {% endif %}">Register</a></li>
+                {%endif%}
+                {% if not session['memname'] %}
+                <li class="nav-item"><a href="{{ url_for('login1') }}" class="nav-link {% if login1 %} active {% endif %}">Login</a></li>
+                {%else%}
+                <li class="nav-item"><a href="{{ url_for('logout1') }}" class="nav-link {% if logout1 %} active {% endif %}">Logout</a></li>
+                {%endif%}
+            </ul>
+        </nav>
+        <hr style="clear:both">
+    </header>

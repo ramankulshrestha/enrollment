@@ -1,0 +1,56 @@
+    {% extends "layout1.html" %}
+    
+    {% block content %}
+  
+
+   
+
+    <div>
+        <table class="table table-hover">
+            <thead>
+            <tr>
+                <th scope="col">Member ID</th>
+                <th scope="col">Name</th>
+                <th scope="col">Address</th>
+                <th scope="col">Total</th>
+                <th scope="col">Remaining</th>
+                <th scope="col">Details</th>
+                <th scope="col">Make Payment</th>
+               
+            </tr>
+            </thead>
+            <tbody>
+
+            <!-- Construct the rest of courses here -->
+            {% for data in memberData %}
+            <tr>
+                <td scope='row'>{{ data[0] }}</td>
+                <td>{{ data[1] }}</td>
+                <td>{{ data[2] }}</td>
+                <td>{{ data[3] }}</td>
+                <td>{{ data[4] }}</td>
+                <td>
+                    
+                    <form action="{{url_for('detail1')}}" method="POST">
+                        <input type="hidden" name="memberID" value="{{data[0]}}">
+                        <input type="hidden" name="name" value="{{data[1]}}">
+                    <button>Details</button>
+                    </form>
+                </td>
+                <td>
+                    <form action="{{url_for('payment1')}}" method="POST">
+                        <input type="hidden" name="memberID" value="{{ data[0] }}">
+                        <input type="hidden" name="name1" value="{{ data[1] }}">
+                        <input type="hidden" name="address" value="{{ data[2] }}">
+                    <button>Payment</button>
+                </form>
+                </td>
+                
+            </tr>
+            {% endfor %}
+            
+            </tbody>
+        </table>
+    </div>
+
+{% endblock %}

@@ -1,0 +1,43 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <title>MCL - Home Page</title>
+    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/css/bootstrap.min.css"
+          integrity="sha384-Gn5384xqQ1aoWXA+058RXPxPg6fy4IWvTNh0E263XmFcJlSAwiGgFAW/dAiS6JXm" crossorigin="anonymous">
+    <link rel="stylesheet" href="{{ url_for('static',filename='css/main.css')}}"/>
+</head>
+<body>
+
+<div class="container-fluid text-center top-container">
+    
+    <img src="{{ url_for('static',filename='images/mcl-logo-2001.jpg')}}">
+    
+</div>
+<div class="container">
+    {% include "includes/nav1.html"%}
+    
+    {% if session['memname'] %}
+    <span class="member">Welcome, {{ session['memname'] }}</span>
+    {% endif %}
+    {% block content %}
+
+    {% endblock %}
+    
+  
+
+    {% with messages = get_flashed_messages(with_categories=true) %}
+    {% if messages %}
+        {% for category, message in messages %}
+            <div class="alert alert-{{category}}">
+                <p>{{ message }}</p>
+            </div>
+        {% endfor %}
+    {% endif %}
+{% endwith %}
+
+   
+
+</div>
+    {% include "includes/footer1.html" %}
+</body>
+</html>    

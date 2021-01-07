@@ -1,0 +1,66 @@
+{% extends "layout1.html" %}
+
+{% block content %}
+
+<div>
+    <table class="table table-hover">
+        <thead>
+        <tr>
+            <th scope="col">Member ID</th>
+            <th scope="col">Name</th>
+            <th scope="col">Address</th>
+        </tr>
+        </thead>
+        <tbody>
+
+        <!-- Construct the rest of courses here -->
+       
+        <tr>
+            <td> {{ session.get('paymemid')}} </td>
+            <td> {{ session.get('paymemname')}} </td>
+            <td> {{ session.get('paymemadd')}} </td>
+
+        </tr>
+         
+        
+        </tbody>
+    </table>
+</div> 
+    <div class="container">
+        <form name="payment1" action="" method="post" novalidate>
+       <fieldset class="form-group">
+         
+           {{ form.hidden_tag() }}  
+           
+               
+               <p> {{ form.paydate.label }}</br>
+                   {{ form.paydate }}
+                   {% for error in form.paydate.errors %}
+                    <span class="error-message">{{ error }}</span>
+                   {% endfor %}
+               </p>
+           
+               <p> {{ form.payAmount.label }}</br>
+                   {{ form.payAmount }}
+                   {% for error in form.payAmount.errors %}
+                    <span class="error-message">{{ error }}</span>
+                   {% endfor %}
+               </p>
+           
+               <p> {{ form.payReference.label }}</br>
+                   {{ form.payReference }}
+                   {% for error in form.payReference.errors %}
+                    <span class="error-message">{{ error }}</span>
+                   {% endfor %}
+               </p>
+           
+               
+
+            <p> 
+                {{ form.submit() }}
+            </p>
+           
+       </fieldset>
+       </form>
+   </div>
+{% endblock %}

@@ -1,0 +1,13 @@
+{% extends "layout1.html" %}
+{% block content %}
+    <div class="row">
+        <div class="col-md-12 text-center">
+            <h1>Welcome to Member Community.</h1>
+            {% if index1 %}
+            <h3>Let's get started.</h3>
+            {% else %}
+            <p>Already registered? <a href="{{url_for('login1') }}">Login</a></p>
+            {% endif %}
+            </div>
+    </div>
+    {% endblock %}
