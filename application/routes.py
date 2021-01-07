@@ -1,4 +1,4 @@
-from application import app, db
+from application import app
 from flask import render_template,request,Response,json, redirect, flash,session,url_for
 #from application.models import User,Course,Enrollment
 from application.forms import LoginForm, RegisterForm,PayForm
